@@ -1,9 +1,8 @@
 import java.util.Scanner;
 
 public class CtoFConverter
-{
+{ 
     private static boolean done;
-
     public static void main(String[] args) {
         Scanner in = new Scanner(System.in);
         double tempC = 0.0;
@@ -13,19 +12,22 @@ public class CtoFConverter
         do
         {
             System.out.print("Enter temp in celsius: ");
-            if (in.hasNextInt())
+            if (in.hasNextDouble())
             {
                 tempC = in.nextDouble();
-                tempF = ((9/5*tempC)+32);
-            }
-            else
-            {
-                trash = in.nextLine();
+                tempF = ((tempC*9/5)+32);
+                System.out.println("The temp in farenhiet  " + tempF);
+                if(tempF == 32.0) {
+                    System.out.println("The temperature you've entered is " + tempF + " which is a freezing point!");
+                } else if (tempF == 212.0) {
+                    System.out.println("The temperature you've entered is " + tempF + " which is a boiling point!");
+                }
+            } else {
+                trash = in.next();
                 System.out.println("You must enter a valid temp not: " + trash + "\n");
+                done = true;
             }
-
         }
-        while (tempF == 0);
-        System.out.println("The temp in farenhiet  " + tempF);
+        while (!done);
     }
 }
